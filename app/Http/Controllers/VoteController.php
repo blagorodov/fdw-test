@@ -22,7 +22,7 @@ class VoteController extends Controller
             ->whereDoesntHave('votes', function ($query) use ($voterUuid): void {
                 $query->where('voter_uuid', $voterUuid);
             })
-            ->orderBy('id')
+            ->inRandomOrder()
             ->limit(2)
             ->get();
 
