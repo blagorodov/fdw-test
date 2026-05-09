@@ -51,6 +51,50 @@
     "file": "assets/instrument-sans-600-normal2.woff2",
     "src": "_instrument-sans-600-normal2.woff2"
   },
+  "_jquery.module.js": {
+    "file": "assets/chunks/jquery.module.js",
+    "name": "jquery.module"
+  },
+  "_preload-helper.css": {
+    "file": "assets/preload-helper.css",
+    "src": "_preload-helper.css"
+  },
+  "_preload-helper.js": {
+    "file": "assets/chunks/preload-helper.js",
+    "name": "preload-helper",
+    "css": [
+      "assets/preload-helper.css"
+    ]
+  },
+  "node_modules/datatables/media/images/sort_asc.png": {
+    "file": "assets/sort_asc.png",
+    "src": "node_modules/datatables/media/images/sort_asc.png"
+  },
+  "node_modules/datatables/media/images/sort_asc_disabled.png": {
+    "file": "assets/sort_asc_disabled.png",
+    "src": "node_modules/datatables/media/images/sort_asc_disabled.png"
+  },
+  "node_modules/datatables/media/images/sort_both.png": {
+    "file": "assets/sort_both.png",
+    "src": "node_modules/datatables/media/images/sort_both.png"
+  },
+  "node_modules/datatables/media/images/sort_desc.png": {
+    "file": "assets/sort_desc.png",
+    "src": "node_modules/datatables/media/images/sort_desc.png"
+  },
+  "node_modules/datatables/media/images/sort_desc_disabled.png": {
+    "file": "assets/sort_desc_disabled.png",
+    "src": "node_modules/datatables/media/images/sort_desc_disabled.png"
+  },
+  "node_modules/datatables/media/js/jquery.dataTables.js": {
+    "file": "assets/chunks/jquery.dataTables.js",
+    "name": "jquery.dataTables",
+    "src": "node_modules/datatables/media/js/jquery.dataTables.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jquery.module.js"
+    ]
+  },
   "node_modules/ez-plus/src/jquery.ez-plus.js": {
     "file": "assets/chunks/jquery.ez-plus.js",
     "name": "jquery.ez-plus",
@@ -81,17 +125,42 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/js/stat.js": {
+    "file": "assets/stat.js",
+    "name": "stat",
+    "src": "resources/js/stat.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery.module.js",
+      "_preload-helper.js"
+    ],
+    "dynamicImports": [
+      "node_modules/datatables/media/js/jquery.dataTables.js",
+      "node_modules/jquery-toast-plugin/src/jquery.toast.js"
+    ],
+    "css": [
+      "assets/stat.css"
+    ],
+    "assets": [
+      "assets/sort_both.png",
+      "assets/sort_asc.png",
+      "assets/sort_desc.png",
+      "assets/sort_asc_disabled.png",
+      "assets/sort_desc_disabled.png"
+    ]
+  },
   "resources/js/vote.js": {
     "file": "assets/vote.js",
     "name": "vote",
     "src": "resources/js/vote.js",
     "isEntry": true,
+    "imports": [
+      "_jquery.module.js",
+      "_preload-helper.js"
+    ],
     "dynamicImports": [
       "node_modules/jquery-toast-plugin/src/jquery.toast.js",
       "node_modules/ez-plus/src/jquery.ez-plus.js"
-    ],
-    "css": [
-      "assets/vote.css"
     ]
   }
 }

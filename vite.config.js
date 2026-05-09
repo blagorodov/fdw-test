@@ -4,6 +4,12 @@ import { bunny } from 'laravel-vite-plugin/fonts';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+    css: {
+        lightningcss: {
+            // legacy DataTables CSS uses IE `*property` hacks
+            errorRecovery: true,
+        },
+    },
     build: {
         rollupOptions: {
             output: {
@@ -30,6 +36,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/js/vote.js',
+                'resources/js/stat.js',
             ],
             refresh: true,
             fonts: [
