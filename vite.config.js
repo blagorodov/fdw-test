@@ -4,6 +4,26 @@ import { bunny } from 'laravel-vite-plugin/fonts';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+    build: {
+        rollupOptions: {
+            output: {
+                // Без хеша в имени — стабильные пути в build/assets (удобнее diff/деплой).
+                // После релиза может понадобиться сброс кэша браузера/CDN для JS/CSS.
+                entryFileNames: (chunkInfo) => {
+                    const id = chunkInfo.facadeModuleId ?? '';
+                    const m = id.match(/([^/]+)\.(js|css)$/);
+                    if (m) {
+                        return `assets/${m[1]}.${m[2]}`;
+                    }
+
+                    return 'assets/[name].js';
+                },
+                // Отдельная папка, чтобы имена чанков не пересекались с entry.
+                chunkFileNames: 'assets/chunks/[name].js',
+                assetFileNames: 'assets/[name][extname]',
+            },
+        },
+    },
     plugins: [
         laravel({
             input: [

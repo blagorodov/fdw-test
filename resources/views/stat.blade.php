@@ -17,5 +17,9 @@
         >
             Назад
         </a>
+
+        <main class="flex min-h-screen flex-col items-center justify-start gap-6 px-4 pt-16">
+            <h1 class="text-3xl font-bold text-gray-900">Статистика</h1>
+        </main>
     </body>
 </html>

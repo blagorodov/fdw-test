@@ -1,75 +1,97 @@
 {
-  "_fonts-DkuEHybc.css": {
-    "file": "assets/fonts-DkuEHybc.css",
-    "src": "_fonts-DkuEHybc.css"
+  "_fonts.css": {
+    "file": "assets/fonts.css",
+    "src": "_fonts.css"
   },
-  "_instrument-sans-400-normal-D1W7dsQl.woff": {
-    "file": "assets/instrument-sans-400-normal-D1W7dsQl.woff",
-    "src": "_instrument-sans-400-normal-D1W7dsQl.woff"
+  "_instrument-sans-400-normal.woff": {
+    "file": "assets/instrument-sans-400-normal.woff",
+    "src": "_instrument-sans-400-normal.woff"
   },
-  "_instrument-sans-400-normal-DRC__1Mx.woff2": {
-    "file": "assets/instrument-sans-400-normal-DRC__1Mx.woff2",
-    "src": "_instrument-sans-400-normal-DRC__1Mx.woff2"
+  "_instrument-sans-400-normal.woff2": {
+    "file": "assets/instrument-sans-400-normal.woff2",
+    "src": "_instrument-sans-400-normal.woff2"
   },
-  "_instrument-sans-400-normal-Q_nF8v4l.woff2": {
-    "file": "assets/instrument-sans-400-normal-Q_nF8v4l.woff2",
-    "src": "_instrument-sans-400-normal-Q_nF8v4l.woff2"
+  "_instrument-sans-400-normal2.woff": {
+    "file": "assets/instrument-sans-400-normal2.woff",
+    "src": "_instrument-sans-400-normal2.woff"
   },
-  "_instrument-sans-400-normal-r32jotim.woff": {
-    "file": "assets/instrument-sans-400-normal-r32jotim.woff",
-    "src": "_instrument-sans-400-normal-r32jotim.woff"
+  "_instrument-sans-400-normal2.woff2": {
+    "file": "assets/instrument-sans-400-normal2.woff2",
+    "src": "_instrument-sans-400-normal2.woff2"
   },
-  "_instrument-sans-500-normal-CAxz3nsc.woff": {
-    "file": "assets/instrument-sans-500-normal-CAxz3nsc.woff",
-    "src": "_instrument-sans-500-normal-CAxz3nsc.woff"
+  "_instrument-sans-500-normal.woff": {
+    "file": "assets/instrument-sans-500-normal.woff",
+    "src": "_instrument-sans-500-normal.woff"
   },
-  "_instrument-sans-500-normal-CTEe1bJa.woff2": {
-    "file": "assets/instrument-sans-500-normal-CTEe1bJa.woff2",
-    "src": "_instrument-sans-500-normal-CTEe1bJa.woff2"
+  "_instrument-sans-500-normal.woff2": {
+    "file": "assets/instrument-sans-500-normal.woff2",
+    "src": "_instrument-sans-500-normal.woff2"
   },
-  "_instrument-sans-500-normal-Dk9ku72i.woff2": {
-    "file": "assets/instrument-sans-500-normal-Dk9ku72i.woff2",
-    "src": "_instrument-sans-500-normal-Dk9ku72i.woff2"
+  "_instrument-sans-500-normal2.woff": {
+    "file": "assets/instrument-sans-500-normal2.woff",
+    "src": "_instrument-sans-500-normal2.woff"
   },
-  "_instrument-sans-500-normal-Z6ESRlEs.woff": {
-    "file": "assets/instrument-sans-500-normal-Z6ESRlEs.woff",
-    "src": "_instrument-sans-500-normal-Z6ESRlEs.woff"
+  "_instrument-sans-500-normal2.woff2": {
+    "file": "assets/instrument-sans-500-normal2.woff2",
+    "src": "_instrument-sans-500-normal2.woff2"
   },
-  "_instrument-sans-600-normal-B7fBEWYG.woff2": {
-    "file": "assets/instrument-sans-600-normal-B7fBEWYG.woff2",
-    "src": "_instrument-sans-600-normal-B7fBEWYG.woff2"
+  "_instrument-sans-600-normal.woff": {
+    "file": "assets/instrument-sans-600-normal.woff",
+    "src": "_instrument-sans-600-normal.woff"
   },
-  "_instrument-sans-600-normal-B9e8oLYv.woff": {
-    "file": "assets/instrument-sans-600-normal-B9e8oLYv.woff",
-    "src": "_instrument-sans-600-normal-B9e8oLYv.woff"
+  "_instrument-sans-600-normal.woff2": {
+    "file": "assets/instrument-sans-600-normal.woff2",
+    "src": "_instrument-sans-600-normal.woff2"
   },
-  "_instrument-sans-600-normal-BsaQcF38.woff2": {
-    "file": "assets/instrument-sans-600-normal-BsaQcF38.woff2",
-    "src": "_instrument-sans-600-normal-BsaQcF38.woff2"
+  "_instrument-sans-600-normal2.woff": {
+    "file": "assets/instrument-sans-600-normal2.woff",
+    "src": "_instrument-sans-600-normal2.woff"
   },
-  "_instrument-sans-600-normal-DMks36a2.woff": {
-    "file": "assets/instrument-sans-600-normal-DMks36a2.woff",
-    "src": "_instrument-sans-600-normal-DMks36a2.woff"
+  "_instrument-sans-600-normal2.woff2": {
+    "file": "assets/instrument-sans-600-normal2.woff2",
+    "src": "_instrument-sans-600-normal2.woff2"
+  },
+  "node_modules/ez-plus/src/jquery.ez-plus.js": {
+    "file": "assets/chunks/jquery.ez-plus.js",
+    "name": "jquery.ez-plus",
+    "src": "node_modules/ez-plus/src/jquery.ez-plus.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/jquery-toast-plugin/src/jquery.toast.js": {
+    "file": "assets/chunks/jquery.toast.js",
+    "name": "jquery.toast",
+    "src": "node_modules/jquery-toast-plugin/src/jquery.toast.js",
+    "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-fY_JmR5r.css",
+    "file": "assets/app.css",
     "name": "app",
     "names": [
       "app.css"
     ],
     "src": "resources/css/app.css",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "assets/app.css"
+    ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-34mOoJaZ.js",
+    "file": "assets/app.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/js/vote.js": {
-    "file": "assets/vote-BjWdg0AQ.js",
+    "file": "assets/vote.js",
     "name": "vote",
     "src": "resources/js/vote.js",
-    "isEntry": true
+    "isEntry": true,
+    "dynamicImports": [
+      "node_modules/jquery-toast-plugin/src/jquery.toast.js",
+      "node_modules/ez-plus/src/jquery.ez-plus.js"
+    ],
+    "css": [
+      "assets/vote.css"
+    ]
   }
 }
