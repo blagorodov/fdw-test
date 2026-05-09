@@ -8,7 +8,7 @@ up:
 
 init: up
 	docker compose exec -T php sh -lc '[ -f .env ] || cp .env.example .env'
-	docker compose exec -T php composer install
+	docker compose exec -T php composer install --no-dev --optimize-autoloader
 	docker compose exec -T php php artisan key:generate
 	docker compose exec -T php php artisan storage:link
 	docker compose exec -T php php artisan migrate --force
