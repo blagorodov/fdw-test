@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['car_model_id', 'year', 'make', 'model', 'image'])]
+#[Fillable(['car_model_id', 'year', 'image'])]
 class Car extends Model
 {
     public $timestamps = false;

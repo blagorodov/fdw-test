@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('car_model_id')->constrained('car_models')->restrictOnDelete();
             $table->unsignedSmallInteger('year');
-            $table->string('make');
-            $table->string('model');
             $table->string('image');
         });
     }
