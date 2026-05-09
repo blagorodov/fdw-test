@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->string('user_uuid')->index();
+            $table->string('voter_uuid')->index();
             $table->foreignId('car_id')->constrained('cars')->restrictOnDelete();
             $table->boolean('is_selected')->default(false);
             $table->timestamps();

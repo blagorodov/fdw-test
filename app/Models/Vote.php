@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['user_uuid', 'car_id', 'is_selected'])]
+#[Fillable(['voter_uuid', 'car_id', 'is_selected'])]
 class Vote extends Model
 {
     public function car(): BelongsTo
