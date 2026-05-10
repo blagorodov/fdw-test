@@ -14,12 +14,12 @@ class FilterController extends Controller
     {
         $voterUuid = $request->session()->get(EnsureVoterUuid::SESSION_KEY);
 
-        return response()->json($this->buildModelsPayload($voterUuid));
+        return response()->json($this->buildModels($voterUuid));
     }
 
     public function modelsAll(): JsonResponse
     {
-        return response()->json($this->buildModelsPayload(null));
+        return response()->json($this->buildModels(null));
     }
 
     public function years(): JsonResponse
@@ -33,10 +33,7 @@ class FilterController extends Controller
         return response()->json($years->values()->all());
     }
 
-    /**
-     * @return array<int, array{id: int, title: string}>
-     */
-    private function buildModelsPayload(?string $voterUuid): array
+    private function buildModels(?string $voterUuid): array
     {
         $query = CarModel::query()->with('carMark');
 

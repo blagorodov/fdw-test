@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\EnsureVoterUuid;
+use App\Http\Requests\StoreVoteRequest;
 use App\Models\Car;
 use App\Models\Vote;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -38,44 +40,56 @@ class VoteController extends Controller
         return response()->json($payload);
     }
 
-    public function vote(Request $request): Response
+    public function vote(StoreVoteRequest $request): Response
     {
-        $validated = $request->validate([
-            'selected_car_id' => ['required', 'integer'],
-            'other_car_id' => ['required', 'integer', 'different:selected_car_id'],
-        ]);
+        $validated = $request->validated();
 
         $selectedId = (int) $validated['selected_car_id'];
         $otherId = (int) $validated['other_car_id'];
-
-        $cars = Car::query()->whereIn('id', [$selectedId, $otherId])->get();
-        if ($cars->count() !== 2) {
-            abort(404);
-        }
+        $carIds = [$selectedId, $otherId];
+        sort($carIds);
 
         $voterUuid = $request->session()->get(EnsureVoterUuid::SESSION_KEY);
 
-        $alreadyVoted = Vote::query()
-            ->where('voter_uuid', $voterUuid)
-            ->whereIn('car_id', [$selectedId, $otherId])
-            ->exists();
+        try {
+            DB::transaction(function () use ($voterUuid, $selectedId, $otherId, $carIds): void {
+                $cars = Car::query()
+                    ->whereIn('id', $carIds)
+                    ->orderBy('id')
+                    ->lockForUpdate()
+                    ->get();
 
-        if ($alreadyVoted) {
+                if ($cars->count() !== 2) {
+                    abort(404);
+                }
+
+                if ($cars->pluck('car_model_id')->unique()->count() !== 1) {
+                    abort(422, 'Машины должны относиться к одной модели');
+                }
+
+                $alreadyVoted = Vote::query()
+                    ->where('voter_uuid', $voterUuid)
+                    ->whereIn('car_id', [$selectedId, $otherId])
+                    ->exists();
+
+                if ($alreadyVoted) {
+                    abort(409);
+                }
+
+                Vote::query()->create([
+                    'voter_uuid' => $voterUuid,
+                    'car_id' => $selectedId,
+                    'is_selected' => true,
+                ]);
+                Vote::query()->create([
+                    'voter_uuid' => $voterUuid,
+                    'car_id' => $otherId,
+                    'is_selected' => false,
+                ]);
+            });
+        } catch (UniqueConstraintViolationException) {
             abort(409);
         }
-
-        DB::transaction(function () use ($voterUuid, $selectedId, $otherId): void {
-            Vote::query()->create([
-                'voter_uuid' => $voterUuid,
-                'car_id' => $selectedId,
-                'is_selected' => true,
-            ]);
-            Vote::query()->create([
-                'voter_uuid' => $voterUuid,
-                'car_id' => $otherId,
-                'is_selected' => false,
-            ]);
-        });
 
         return response()->noContent();
     }

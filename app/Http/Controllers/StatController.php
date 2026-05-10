@@ -2,32 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StatRequest;
 use App\Models\Car;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
 
 class StatController extends Controller
 {
-    public function stat(Request $request): JsonResponse
+    public function stat(StatRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'car_model_id' => ['required', 'integer', Rule::exists('car_models', 'id')],
-            'year_from' => ['required', 'integer', Rule::exists('cars', 'year')],
-            'year_to' => ['required', 'integer', Rule::exists('cars', 'year')],
-        ], [
-            'car_model_id.exists' => 'Модель не существует',
-            'year_from.exists' => 'Год не существует',
-            'year_to.exists' => 'Год не существует',
-        ]);
-
-        if ($validated['year_from'] > $validated['year_to']) {
-            throw ValidationException::withMessages([
-                'year_from' => ['Год от должен быть не больше Года до'],
-            ]);
-        }
+        $validated = $request->validated();
 
         $cars = Car::query()
             ->where('car_model_id', $validated['car_model_id'])

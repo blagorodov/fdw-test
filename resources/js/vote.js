@@ -83,11 +83,23 @@ $(() => {
 
     let currentModelId = '';
     let votingInProgress = false;
+    let pairLoading = false;
+    let modelsLoadFailed = false;
+
+    function updateSelectDisabled() {
+        $select.prop(
+            'disabled',
+            modelsLoadFailed || votingInProgress || pairLoading,
+        );
+    }
 
     function loadNextPair(modelId) {
         if (!modelId) {
             return;
         }
+
+        pairLoading = true;
+        updateSelectDisabled();
 
         $.ajax({
             url: `/api/next/${encodeURIComponent(modelId)}`,
@@ -112,6 +124,10 @@ $(() => {
                             ? MSG_NO_IMAGES
                             : MSG_SERVER_ERROR,
                     );
+            })
+            .always(() => {
+                pairLoading = false;
+                updateSelectDisabled();
             });
     }
 
@@ -131,8 +147,9 @@ $(() => {
             });
         })
         .fail(() => {
+            modelsLoadFailed = true;
             $modelsError.text(MSG_SERVER_ERROR).removeClass('hidden');
-            $select.prop('disabled', true);
+            updateSelectDisabled();
         });
 
     $select.on('change', function () {
@@ -168,6 +185,7 @@ $(() => {
         }
 
         votingInProgress = true;
+        updateSelectDisabled();
 
         const voteRequest = $.ajax({
             url: '/api/vote',
@@ -201,6 +219,7 @@ $(() => {
 
         voteRequest.always(() => {
             votingInProgress = false;
+            updateSelectDisabled();
         });
     });
 });
